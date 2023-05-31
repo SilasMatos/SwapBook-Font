@@ -57,15 +57,15 @@ function UpdateUser() {
             <p id='pr-up'>Gênero</p>
             <form>
             <div className='radio-div'>
-              <label>
+              <label id='tm-lb'>
                 <input type="radio" class="radio-up" name="gender" value="homem"></input>
                 Homem
-              </label>
-              <label>
+              </label >
+              <label id='tm-lb'>
                 <input type="radio" class="radio-up" name="gender" value="mulher"></input>
                 Mulher
               </label>
-              <label>
+              <label id='tm-lb'>
                 <input type="radio" class="radio-up" name="gender" value="outros"></input>
                 Outros
               </label>
