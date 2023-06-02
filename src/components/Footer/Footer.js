@@ -4,6 +4,7 @@ import logoFooter from '../img/logo_footer.png'
 import '../Modal/Modal'
 import ModalPp from '../Modal/Modal';
 import ModalTc from '../Modal/ModalTc';
+import ModalSup from '../Modal/ModalSup';
 
 //<div class="col-md-1 col-lg-1 col-xl-1 mx-auto mb-md-0 mb-4">
 
@@ -69,7 +70,7 @@ const Footer = () => {
             <a href="#!" class="text-reset"><ModalTc/></a>
           </p>
           <p>
-            <a href="#!" class="text-reset">Suporte</a>
+            <a href="#!" class="text-reset"><ModalSup/> </a>
           </p>
           <p>
             

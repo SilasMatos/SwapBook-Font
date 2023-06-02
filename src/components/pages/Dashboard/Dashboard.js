@@ -11,23 +11,38 @@ import { FaBook} from 'react-icons/fa';
 import ModalAvs from "../../Modal/ModalAvs";
 import Swal from 'sweetalert2';
 import withReactContent from 'sweetalert2-react-content';
-
-
-
+import InputMask from 'react-input-mask';
 
 const Dashboard = () => {
 
   const [userData, setUserData] = useContext(UserContext);
   const [productName, setProductName] = useState('')
-  const [productYear, setProductYear] = useState(0)
+  const [productYear, setProductYear] = useState('')
   const [categoria, setCategoria] = useState('')
   const [autorProduct, setAutorProduct] = useState('')
-  const [productPrice, setProductPrice] = useState(0)
+  const [productPrice, setProductPrice] = useState('')
   const [sisnopseProduct, setSinopseProduct] = useState('')
   const [src, setSrc] = useState('')
   const [state, setState] = useState('')
   const navigate = useNavigate()
   const MySwal = withReactContent(Swal)
+
+  const handlePriceChange = (e) => {
+    const inputValue = e.target.value;
+
+    // Remove qualquer caracter não numérico do valor
+    const numericValue = inputValue.replace(/[^\d]/g, '');
+
+    // Verifica se o valor tem 2 ou 3 dígitos
+    if (numericValue.length === 4 || numericValue.length === 5) {
+      // Adiciona a vírgula para separar os centavos
+      const formattedValue = numericValue.slice(0, -2) + ',' + numericValue.slice(-2);
+
+      setProductPrice(formattedValue);
+    } else {
+      setProductPrice(numericValue);
+    }
+  };
 
   async function newProducthandler(e){
     e.preventDefault();
@@ -94,14 +109,21 @@ const Dashboard = () => {
             <textarea class="form-control sino-edit" type="text" onChange={(e) => setSinopseProduct(e.target.value)} placeholder="Sinopse" ></textarea>
             </div>
             <div className="col-input-03">
-            <input type="number" className="form-control input-edit" placeholder="Ano" onChange={(e) => setProductYear(e.target.value)} />
-            <input type="number" className="form-control input-edit" placeholder="Preço" onChange={(e) => setProductPrice(e.target.value)} />
+            <InputMask mask="9999" maskPlaceholder="" className="form-control input-edit" placeholder="Ano" value={productYear} onChange={(e) => setProductYear(e.target.value)} />
+            <input
+        type="text"
+        className="form-control input-edit"
+        placeholder="Preço"
+        value={productPrice}
+        onChange={handlePriceChange}
+      />
+
             <select className="form-control edit-select" 
             onChange={(e)=> 
             setCategoria(e.target.value)}
             value={categoria}
              name="Categorias">
-              <option value="Romance"selected> Categórias </option>
+              <option value="Generico"selected> Categórias </option>
               <option value="Ficção" > Ficção</option>
               <option value="Ação">Ação</option>
               <option value="Suspense">Suspense</option>
@@ -115,6 +137,7 @@ const Dashboard = () => {
               <option value="Drama">Drama</option>
               <option value="AutoAjuda">Auto Ajuda</option>
               <option value="AutoBiografia">Auto Biografia</option>
+              <option value="Romance">Romance</option>
             </select>
             <select className="form-control edit-select" 
             onChange={(e)=> 
@@ -123,7 +146,6 @@ const Dashboard = () => {
              name="Estado">
               <option selected>Estado do Livro</option>
               <option value="Novo" > Novo</option>
-              <option value="ComoNovo">Como Novo</option>
               <option value="MuitoBom">Muito Bom</option>
               <option value="Bom">Bom</option>
               <option value="Regular">Regular</option>
@@ -162,5 +184,3 @@ const Dashboard = () => {
 };
 
 export default Dashboard;
-
-
