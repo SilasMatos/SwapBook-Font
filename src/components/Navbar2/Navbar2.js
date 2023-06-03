@@ -91,7 +91,7 @@ function Navbar2({ setSearchProducts }) {
                                 <BsChatDots className="icon-size" />{' '}
                             </Link>
 
-                            <Link className="icon">
+                            <Link to="/favoritos" className="icon">
                                 <MdFavoriteBorder className="icon-size" />
                             </Link>
                             {userData.isLogged ? (

@@ -1,5 +1,5 @@
 import React, { useState, useContext } from 'react';
-import { UserContext } from '../UseContext/UserContext'
+import { UserContext } from '../UseContext/UserContext';
 import { AiOutlineHeart, AiFillHeart } from 'react-icons/ai';
 import { AiOutlineInfoCircle, AiOutlineShopping } from 'react-icons/ai';
 import { MdFavoriteBorder } from 'react-icons/md';
@@ -17,33 +17,33 @@ function Cards({ src, name, author, price, _id, obj, isFavorite }) {
 
       if (isFavorite) {
         await removeFavorite(userId, productId);
-        
       } else {
         await addFavorite(userId, productId);
-        alert("foi")
       }
     } catch (error) {
       console.log(error);
       alert(error.message);
-
     }
   }
 
   async function addFavorite(userId, productId) {
     try {
-      const response = await api.put(`/user/${userId}/favorite/${productId}`);
-      return response.data.message;
+      const response = await api.post(`/user/${userId}/favorites/${productId}`);
+      console.log(response.data.message);
+      alert('adicionado')
     } catch (error) {
-      throw new Error('Error adding favorite');
+      console.log(error);
+      alert('Error adding favorite');
     }
   }
 
   async function removeFavorite(userId, productId) {
     try {
-      const response = await api.delete(`/user/${userId}/favorite/${productId}`);
-      return response.data.message;
+      const response = await api.delete(`/user/${userId}/favorites/${productId}`);
+      console.log(response.data.message);
     } catch (error) {
-      throw new Error('Error removing favorite');
+      console.log(error);
+      alert('Error removing favorite');
     }
   }
 
@@ -51,7 +51,7 @@ function Cards({ src, name, author, price, _id, obj, isFavorite }) {
     if (userData && userData._id) {
       return userData._id;
     }
-    return null; // User ID not available
+    return null; 
   }
 
   return (

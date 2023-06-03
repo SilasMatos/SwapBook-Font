@@ -18,6 +18,7 @@ import MapGL from '../components/MapGL/MapGL'
 import UpdateBook from '../components/pages/UpdateBook/UpdateBook'
 import UserShow from '../components/pages/UserShow/UserShow'
 import UpdateUser from '../components/pages/UpdateUser/UpdateUser'
+import Favoritos from '../components/pages/Favoritos/Favoritos'
 
 const Rotas = () => {
     const [userData, setUserData] = useContext(UserContext)
@@ -48,12 +49,14 @@ const Rotas = () => {
                         userData.isLogged ?  <UpdateUser/> : <Navigate to="/" />
                     }
                 />
+                
                 <Route exact path="/login" Component={LoginPage} />
                 <Route
                     exact
                     path="/user_presentation/:_id"
                     Component={UserShow}
                 />
+                 <Route exact path="/favoritos" Component={Favoritos} />
                 <Route exact path="/chat" Component={ChatPage} />
                 <Route exact path="/registrar" Component={RegisterPage} />
                 <Route
