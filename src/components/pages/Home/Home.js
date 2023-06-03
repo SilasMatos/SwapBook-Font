@@ -36,15 +36,15 @@ const Home = () => {
 
   useEffect(() => {
     const handleResize = () => {
-      setIsMobile(window.innerWidth <= 768); // Defina o ponto de ruptura adequado para dispositivos móveis
+      setIsMobile(window.innerWidth <= 768); 
     };
 
-    handleResize(); // Verificar o tamanho da tela inicialmente
+    handleResize(); 
 
-    window.addEventListener('resize', handleResize); // Adicionar um ouvinte de redimensionamento
+    window.addEventListener('resize', handleResize); 
 
     return () => {
-      window.removeEventListener('resize', handleResize); // Remover o ouvinte de redimensionamento ao desmontar o componente
+      window.removeEventListener('resize', handleResize); 
     };
   }, []);
 
@@ -118,7 +118,7 @@ const Home = () => {
     const CategoredProducts = intProducts.filter((product) =>
       product.category.toLowerCase().includes(category.toLowerCase())
     );
-    const categories = CategoredProducts.slice(0, 6);
+    const categories = CategoredProducts;
     setCategoredProducts(categories);
   }
 

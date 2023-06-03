@@ -4,9 +4,12 @@ import Navbar2 from '../../Navbar2/Navbar2';
 import Footer from '../../Footer/Footer';
 import {BsShieldLock} from 'react-icons/bs'
 import {RiFileUserLine} from 'react-icons/ri'
+import {BsShieldFillCheck} from 'react-icons/bs'
+import {GoAlert} from 'react-icons/go'
 import {BsCreditCard2Front} from 'react-icons/bs'
 import { UserContext } from '../../UseContext/UserContext';
 import { useContext, useEffect } from 'react';
+
 import api from '../../../Services/Api';
 
 function UpdateUser() {
@@ -64,7 +67,7 @@ function UpdateUser() {
   return (
     <div className=''>
        <Navbar2 />
-       <div className='container'>
+       <div className='container '>
        <div className="container-Up">
       <div className="botoes-Up">
         
@@ -120,7 +123,7 @@ function UpdateUser() {
               </label >
               <label id='tm-lb'>
                 {forms.gender == 'feminino'? 
-                  <input type="radio" class="radio-up"name="gender" checked onChange={(event) =>
+                  <input type="radio"  class="radio-up"name="gender" checked onChange={(event) =>
                     setForms({ ...forms, gender: event.target.value })} value="feminino"/>
                 
 
@@ -147,8 +150,8 @@ function UpdateUser() {
                   }
                   value={forms.email} checked/>
             </div>
-            <div className='itens2-up'>
-            <p id='pr-up'>phone</p>
+            <div className=''>
+            <p id='pr-up'>Telefone</p>
             <input className='input-up' onChange={(event) =>
                     setForms({ ...forms, phone: event.target.value })
                   }
@@ -156,15 +159,36 @@ function UpdateUser() {
             </div>
             <p id='tp-up'>Tipo de Conta:<span id='sp-up'>Particular</span></p>
             <button className='btn-up' onClick={UpdateUserHandler}> Salvar Alterações
-</button>
+            </button>
+          
           </div>
+          <div className="container container-up-2">
+            <div className='cont-itens-2'>
+            
+            <div className='text-icon-cont'><GoAlert id='icon-Def'/><h6>Excluir sua conta</h6></div><button className='btn-def'>Excluir</button>
+            </div>
+            <p id='tx-def'>Dados da sua conta, anúncios e perfil serão excluídos definitivamente<br/>
+Não será possível recuperar sua conta.</p>
+            </div>
           </div>
           </div>
         )}
         {divExibida === 'segurancaPrivacidade' && (
-          <div>
-           <h5>Segurança e privacidade</h5>
-           <p>Aumente a segurança e tenha o controle da sua conta</p>
+          <div >
+           <div className="container itens-cont-up">
+          <div className='itens-up'>
+           <h5 className='tx-up'>Segurança e Privacidade</h5>
+           <p className='tx-p-up'>Aumente a segurança e tenha o controle da sua conta</p>
+           <div className="itens-dados-up-2">
+            <div className='cont-PeS'>
+            <BsShieldFillCheck id='icon-PeS'/>
+            <div className='container cont-tx-PeS'>
+            <p className='tx-PeS'>Entenda como o Swap Book cuida da sua segurança e veja dicas de como <br/> fazer uma negociação segura.</p><button className='btn-SeP'>Saiba como se protejer</button>
+            </div>
+            </div>
+            </div>
+          </div>
+          </div>
           </div>
         )}
      

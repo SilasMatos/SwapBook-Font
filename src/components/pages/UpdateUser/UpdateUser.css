@@ -1,87 +1,138 @@
+@import url("../UpdateUser/StyleP&S.css");
 
-.container-Up {
-    display: flex;
-   
-    margin-top: 8rem;
-  }
-  .btn-icon{
-    display: flex;
-    align-self: center;
-  
-
-  }
-
-  #icon-up{
-    font-size: 22pt;
-    display: flex;
-    align-items: center;
-    margin-right: 20px;
-    
-  }
-  .botoes-Up {
-   
-    flex-direction: column;
-  }
- 
-  .conteudo-Up {
-    flex-grow: 1;
-    margin-left: 20px;
-  }
-  .botaoAtivo {
-    background-color: #fff;
-    width: 280px;
-  
-   
-    color: #1d96e6; 
-  }
-  #btn-Up{
-    font-size: 15pt;
-    margin-bottom: 18px;
-    display: flex; 
-    align-self: center;
-  }
-
-
-
-  .tx-up{
-    font-size: 33pt;
-  }
-  .tx-p-up{
-    margin-top: 15px;
-    color: #b8b8b8;
-  }
-.itens-dados-up{
+.container-up-2 {
   background-color: #f1efef;
   padding: 20px;
-  border-radius: 15px;
   margin-top: 20px;
-  border-radius: 26px;
-  
-box-shadow:  8px 8px 9px #cecece,
-             -8px -8px 9px #f2f2f2;
-
+  border-radius: 10px;
+  box-shadow: 5px 5px 19px #cecece, -5px -5px 19px #f2f2f2;
+  height: 110px;
 }
-.itens-dados-up h6{
+
+#tx-def {
+  margin-top: 10px;
+  font-weight: 100;
+  color: #a3a3a3;
+}
+
+.btn-def {
+  color: #1d96e6;
+  font-weight: 600;
+  font-size: 11pt;
+}
+
+.cont-itens-2 {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.cont-itens-icon {
+  display: flex;
+  justify-content: end;
+}
+
+.text-icon-cont {
+  display: flex;
+  align-items: center;
+}
+
+#icon-Def {
+  color: red;
+  font-size: 16pt;
+  margin-right: 5px;
+}
+
+.container-Up {
+  display: flex;
+  width: 1000px;
+  margin-top: 8rem;
+}
+
+.btn-icon {
+  display: flex;
+  align-self: center;
+}
+
+.itens2-up {
+  margin-top: 25px;
+}
+
+#icon-up {
+  font-size: 22pt;
+  display: flex;
+  align-items: center;
+  margin-right: 20px;
+}
+
+.botoes-Up {
+  flex-direction: column;
+}
+
+.conteudo-Up {
+  flex-grow: 1;
+  margin-left: 20px;
+}
+
+.botaoAtivo {
+  background-color: #fff;
+  width: 280px;
+  color: #1d96e6;
+}
+
+#btn-Up {
+  font-size: 15pt;
+  margin-bottom: 18px;
+  display: flex;
+  align-self: center;
+}
+
+.tx-up {
+  font-size: 30pt;
+  font-weight: 200;
+}
+
+.tx-p-up {
+  margin-top: 15px;
+  color: #b8b8b8;
+}
+
+.itens-dados-up {
+  background-color: #f1efef;
+  padding: 20px;
+  border-radius: 10px;
+  margin-top: 20px;
+  box-shadow: 5px 5px 19px #cecece, -5px -5px 19px #f2f2f2;
+}
+
+.itens-dados-up h6 {
   margin-bottom: 22px;
   font-size: 20pt;
   color: #464646;
 }
-.input-up{
+
+.input-up {
   height: 45px;
-  width:  100%;
+  width: 100%;
   border-radius: 10px;
   border: 1px solid #d2d2d2;
   margin-bottom: 25px;
   margin-top: 5px;
+  font-size: 16px;
+  font-weight: 600;
+  padding-left: 10px;
 }
-.input-up:focus{
+
+.input-up:focus {
   border: 2px solid #1d96e6;
   border-color: #1d96e6;
   outline: none;
 }
-#pr-up{
+
+#pr-up {
   font-size: 13pt;
 }
+
 .radio-up {
   appearance: none;
   -webkit-appearance: none;
@@ -92,35 +143,37 @@ box-shadow:  8px 8px 9px #cecece,
   border-radius: 50%;
   margin-right: 5px;
   vertical-align: middle;
-
 }
 
 .radio-up:checked {
   background-color: #1d96e6;
   border: 1px solid #d2d2d2;
 }
-.radio-div{
+
+.radio-div {
   display: flex;
   justify-content: space-around;
 }
 
+#tp-up {
+  color: #3a3a3a;
+  font-weight: 800;
+  font-size: 12pt;
+  margin-bottom: 30px;
+  margin-top: 22px;
+}
 
-#tp-up{
-color: #3a3a3a;
-font-weight: 800;
-font-size: 12pt;
-margin-bottom: 30px;
-margin-top: 22px;
+#sp-up {
+  font-weight: 100;
+  margin-left: 5px;
+  font-size: 10pt;
 }
-#sp-up{
-font-weight: 100;
-margin-left: 5px;
-font-size: 10pt;
-}
-#tm-lb{
+
+#tm-lb {
   font-weight: 600;
   font-size: 11pt;
 }
+
 .btn-up {
   padding: 1em 2em;
   border: none;
@@ -159,4 +212,42 @@ font-size: 10pt;
 
 .btn-up:hover::before {
   width: 250%;
+}
+
+/* Adicionar regras @media para responsividade */
+
+@media screen and (max-width: 768px) {
+  .container-Up {
+    width: 100%;
+    margin-top: 4rem;
+    flex-direction: column;
+  }
+
+  .btn-icon {
+    justify-content: center;
+  }
+
+  .botoes-Up {
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    margin-top: 2rem;
+  }
+
+  .conteudo-Up {
+    margin-left: 0;
+    margin-top: 2rem;
+  }
+
+  .botaoAtivo {
+    width: auto;
+  }
+
+  .btn-up {
+    width: 100%;
+  }
+
+  .tx-up {
+    font-size: 24pt;
+  }
 }
