@@ -145,3 +145,17 @@ font-size: 10pt;
 }
 
 }
+#icon-fav-1{
+    color: #02B2FF;
+    
+    margin-left: 2px;
+}
+#icon-fav-2{
+    margin-left: 2px;
+    color: #008ECC;
+}
+#icon-fav-2:hover{
+    transform: scale(1.2);
+    transition: 1s;
+    
+}

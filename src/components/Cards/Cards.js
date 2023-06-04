@@ -1,4 +1,4 @@
-import React, { useState, useContext } from 'react';
+import React, { useState, useContext, useEffect } from 'react';
 import { UserContext } from '../UseContext/UserContext';
 import { AiOutlineHeart, AiFillHeart } from 'react-icons/ai';
 import { AiOutlineInfoCircle, AiOutlineShopping } from 'react-icons/ai';
@@ -6,20 +6,36 @@ import { MdFavoriteBorder } from 'react-icons/md';
 import api from '../../Services/Api.js';
 import './cardsStyle.css';
 
-function Cards({ src, name, author, price, _id, obj, isFavorite }) {
+function Cards({ src, name, author, price, _id, obj }) {
   const [cart, setCart] = useState([]);
   const [userData] = useContext(UserContext);
+  const [favorite, setFavorite] = useState(false); // Inicializar com valor falso
+
+  useEffect(() => {
+    // Recuperar informações dos produtos favoritos do localStorage
+    const favorites = JSON.parse(localStorage.getItem('favorites')) || [];
+
+    // Verificar se o produto atual está nos favoritos
+    const isFavorite = favorites.some((fav) => fav._id === _id);
+
+    setFavorite(isFavorite); // Atualizar o estado de favorito com base nas informações do localStorage
+  }, []);
 
   async function handleClick() {
     try {
       const userId = getUserId();
       const productId = _id;
 
-      if (isFavorite) {
+      if (favorite) {
         await removeFavorite(userId, productId);
       } else {
         await addFavorite(userId, productId);
       }
+
+      setFavorite(!favorite); // Inverter o estado de favorito
+
+      // Atualizar as informações dos produtos favoritos no localStorage
+      updateFavoritesStorage(productId);
     } catch (error) {
       console.log(error);
       alert(error.message);
@@ -30,7 +46,6 @@ function Cards({ src, name, author, price, _id, obj, isFavorite }) {
     try {
       const response = await api.post(`/user/${userId}/favorites/${productId}`);
       console.log(response.data.message);
-      alert('adicionado')
     } catch (error) {
       console.log(error);
       alert('Error adding favorite');
@@ -43,7 +58,7 @@ function Cards({ src, name, author, price, _id, obj, isFavorite }) {
       console.log(response.data.message);
     } catch (error) {
       console.log(error);
-      alert('Error removing favorite');
+     
     }
   }
 
@@ -51,17 +66,26 @@ function Cards({ src, name, author, price, _id, obj, isFavorite }) {
     if (userData && userData._id) {
       return userData._id;
     }
-    return null; 
+    return null;
+  }
+
+  function updateFavoritesStorage(productId) {
+    const favorites = JSON.parse(localStorage.getItem('favorites')) || [];
+
+    const updatedFavorites = favorites.filter((fav) => fav._id !== productId);
+
+    if (!favorite) {
+      const product = obj;
+      updatedFavorites.push(product);
+    }
+
+    localStorage.setItem('favorites', JSON.stringify(updatedFavorites));
   }
 
   return (
     <div className="product-card">
       <div className="product-tumb">
-        <img
-          src={`${process.env.REACT_APP_API}/${src}`}
-          id="img-card"
-          alt="Denim Jeans"
-        />
+        <img src={`${process.env.REACT_APP_API}/${src}`} id="img-card" alt="Denim Jeans" />
       </div>
       <div className="product-details">
         <span className="product-catagory">
@@ -78,11 +102,7 @@ function Cards({ src, name, author, price, _id, obj, isFavorite }) {
               <AiOutlineShopping id="icon-info" />
             </a>
             <button className="fs-5" onClick={handleClick}>
-              {cart.some((itemCart) => itemCart._id === obj._id) ? (
-                <AiFillHeart />
-              ) : (
-                <MdFavoriteBorder id="icon-info" />
-              )}
+              {favorite ? <AiFillHeart id='icon-fav-1' /> : <MdFavoriteBorder id="icon-fav-2" />}
             </button>
             <a href={`/details/${_id}`}>
               {' '}

@@ -7,7 +7,7 @@ background-image: linear-gradient(to right, #02b2ff 0%, #05abf3 50%, #008ecc 100
 box-shadow: 15px 15px 30px #bebebe,
 -15px -15px 30px #ffffff;
 transition: 1s;
-background-image: url('../img/fundo.png');
+background-image: url('../img/fundo2.png');
 border-radius: 35px;
 display: flex;
 align-items: center;
@@ -52,7 +52,23 @@ align-items: center;
         margin-bottom: 4px ;
     }
     .col-t2, h6, h5{
-        font-size: 5pt;
+        font-size: 4pt;
     }
+    .edit-car{
+        width: 900px;
+        height: 350px;
+        background-color: #05abf3;
+        background-image: linear-gradient(to right, #02b2ff 0%, #05abf3 50%, #008ecc 100%);
+        box-shadow: 15px 15px 30px #bebebe,
+        -15px -15px 30px #ffffff;
+        transition: 1s;
+        background-image: url('../img/fundo3.png');
+        border-radius: 35px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-bottom: 5rem;
+        margin-top: 8rem;
+        }
     
   }

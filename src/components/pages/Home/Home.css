@@ -14,15 +14,22 @@
 
 }
 .carousel-control-prev {
-  margin-right: 15px;
+
+  width: 30px;
   font-size: 20pt;
+  margin-right: 35px;
+  color: #008ECC;  
   text-decoration: none;
+  background-color: #f2f2f2;
+  border-radius: 10px;
 }
 
 .carousel-control-next {
-  margin-left: 15px;
+  border-radius: 10px;
+  background-color: #f2f2f2;
   font-size: 20pt;
-  color: #00a8ff;
+  color: #008ECC;
+  width: 30px;
 }
 
 
