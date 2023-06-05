@@ -62,7 +62,13 @@ font-size: 10pt;
     color: #000000;
     text-decoration: none;
     transition: 0.3s;
+    /* Add the following styles */
+    max-height: 3.6em; /* Adjust the value as needed to fit your design */
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
 }
+
 
 .product-details h4 a:hover {
     color: #430bfb;

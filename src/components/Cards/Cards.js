@@ -39,9 +39,9 @@ function Cards({ src, name, author, price, _id, obj }) {
         await addFavorite(userId, productId);
       }
 
-      setFavorite(!favorite); // Inverter o estado de favorito
+      setFavorite(!favorite); 
 
-      // Atualizar as informações dos produtos favoritos no localStorage
+
       updateFavoritesStorage(productId);
     } catch (error) {
       console.log(error);

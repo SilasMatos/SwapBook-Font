@@ -25,7 +25,7 @@ const RegisterPage = () => {
   const MySwal = withReactContent(Swal)
 
 
-  const phoneMask = ['(', /\d/, /\d/, ')', ' ', /\d/, /\d/, /\d/, /\d/, '-', /\d/, /\d/, /\d/, /\d/];
+  const phoneMask = ['(', /\d/, /\d/, ')', ' ', /\d/, ' ', /\d/, /\d/, /\d/, /\d/, '-', /\d/, /\d/, /\d/, /\d/];
 
   useEffect(()=> {
     getUserLocation()

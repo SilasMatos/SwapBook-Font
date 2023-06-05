@@ -36,7 +36,7 @@ const NewPassword = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-
+  
     if (currentPassword && newPassword) {
       try {
         const response = await api.put(
@@ -55,12 +55,25 @@ const NewPassword = () => {
         })
         navigate('/')
       } catch (err) {
-        alert(`Falha ao alterar a senha do usuário`);
+        if (err.response && err.response.status === 400 && err.response.data.message === 'Senha atual incorreta') {
+          MySwal.fire({
+            title: 'Erro!',
+            text: 'Senha atual incorreta. Por favor, tente novamente.',
+            icon: 'error',
+            confirmButtonText: 'Ok',
+            didOpen: () => {
+              MySwal.stopTimer()
+            },
+          })
+        } else {
+          alert(`Falha ao alterar a senha do usuário`);
+        }
       }
     } else {
       alert("Por favor, preencha todos os campos");
     }
   };
+  
 
   return (
     <div className="container-senha">

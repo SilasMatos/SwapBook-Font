@@ -19,8 +19,8 @@
   padding: 20px;
   
   border-radius: 15px;
-background: #e0e0e0;
-box-shadow:  11px 11px 22px #5a5a5a,
+background: #eae8e8;
+box-shadow:  11px 11px 22px #b5b4b4,
              -11px -11px 22px #ffffff;
    }
 
@@ -68,18 +68,21 @@ box-shadow:  11px 11px 22px #5a5a5a,
 
 .btn-form-edit {
   margin-top: 10px;
+  font-size: 14pt;
   width: 100%;
   padding: 10px;
   border-radius: 5px;
+  font-weight: 500;
   border: none;
-  background-color: #008CBA;
+  background-color: #0383ad;
   color: #fff;
   cursor: pointer;
   transition: all 0.3s ease;
 }
 
 .btn-form-edit:hover {
-  background-color: #005266;
+  background-color: #1a7fd2;
+  color: #fff;
 }
 
 

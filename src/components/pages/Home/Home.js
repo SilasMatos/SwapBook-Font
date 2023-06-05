@@ -191,11 +191,6 @@ const Home = () => {
             </Carousel>
             <div  className="container btn-run-filter"><Link id="link-filter" to="/categorias"><div className="btn-run-filter2"><p>Veja mais</p><BsArrowRightShort id="icon-filter"/></div></Link></div>
             </div>
-        
-      
-      
-
-          
             <Trotes />
             <div className="container">
       <h2 id="edit-h2">
@@ -237,25 +232,6 @@ const Home = () => {
         ) : null}
       </div>
     </div>
-            {/* <div className="text-center">
-              <h2>LIVROS:</h2>
-              <div className="d-flex">
-                {allBooks.map((product) => (
-                  <Cards
-                    key={product._id}
-                    name={product.name}
-                    price={product.price}
-                    synopsis={product.synopsis}
-                  />
-                ))}
-              </div>
-               {userData.isLogged ? (
-                <Link to="/map_products">
-                  <p>Veja no Mapa <GoLocation/></p>
-                </Link>
-              ) : null}
-
-            </div> */}
           </div>
         )}
       </div>
