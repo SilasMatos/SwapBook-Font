@@ -11,6 +11,7 @@ import { Link } from "react-router-dom";
 import { useContext } from "react";
 import { UserContext } from "../../UseContext/UserContext.js";
 import { GoLocation } from "react-icons/go";
+import {BsBook} from "react-icons/bs"
 import "../Home/Home.css";
 import Carousel from "react-bootstrap/Carousel";
 import "slick-carousel/slick/slick.css";
@@ -84,8 +85,7 @@ const Home = () => {
       console.log("Erro ao carregar os produtos");
     }
   }
-  console.log(latitude);
-  console.log(longitude);
+  
   async function getProducts() {
     try {
       const Products = await api.get(`/product/`);
@@ -188,7 +188,15 @@ const Home = () => {
                       ))}
             </Carousel>
             </div>
+            <div className=" link_map">
+        
+          <Link id="link-tx" to="/categorias">
+            <button className="btn_map link_map">
+              Ver Mais <BsBook className="ml-2" id="icon-map" />
+            </button>
+          </Link>
 
+      </div>               
             <Trotes />
             <div className="container">
       <h2 id="edit-h2">
@@ -196,7 +204,6 @@ const Home = () => {
       </h2>
       {!loading ? <Loader /> : null}
       <Carousel className="my-carousel" prevIcon={<FcPrevious />} nextIcon={<FcNext />}>
-        {!loading ? <Loader /> : null}
         {productsData.reduce((rows, product, index) => {
           if (index % (isMobile ? 2 : 5) === 0) rows.push([]);
           rows[rows.length - 1].push(product);

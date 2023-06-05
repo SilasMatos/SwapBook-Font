@@ -20,6 +20,7 @@ import UserShow from '../components/pages/UserShow/UserShow'
 import UpdateUser from '../components/pages/UpdateUser/UpdateUser'
 import Favoritos from '../components/pages/Favoritos/Favoritos'
 import NewPassword from '../components/Login/NewPassword'
+import Categories from '../components/pages/categories/Categories'
 const Rotas = () => {
     const [userData, setUserData] = useContext(UserContext)
     return (
@@ -73,6 +74,7 @@ const Rotas = () => {
                         userData.isLogged ? <UpdateBook /> : <Navigate to="/" />
                     }
                 />
+                 <Route exact path="/categorias" Component={Categories} />
             </Routes>
         </Router>
     )

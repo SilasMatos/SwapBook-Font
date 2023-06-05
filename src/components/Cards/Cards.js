@@ -1,25 +1,32 @@
-import React, { useState, useContext, useEffect } from 'react';
-import { UserContext } from '../UseContext/UserContext';
-import { AiOutlineHeart, AiFillHeart } from 'react-icons/ai';
-import { AiOutlineInfoCircle, AiOutlineShopping } from 'react-icons/ai';
-import { MdFavoriteBorder } from 'react-icons/md';
-import api from '../../Services/Api.js';
-import './cardsStyle.css';
+import React, { useState, useContext, useEffect } from "react";
+import { UserContext } from "../UseContext/UserContext";
+import { AiOutlineHeart, AiFillHeart } from "react-icons/ai";
+import { AiOutlineInfoCircle, AiOutlineShopping } from "react-icons/ai";
+import { MdFavoriteBorder } from "react-icons/md";
+import api from "../../Services/Api.js";
+import "./cardsStyle.css";
 
 function Cards({ src, name, author, price, _id, obj }) {
-  const [cart, setCart] = useState([]);
   const [userData] = useContext(UserContext);
   const [favorite, setFavorite] = useState(false); // Inicializar com valor falso
+  const [UserInformations, setUserInformations] = useState([]);
+  const [dependencie, setDependecies] = useState([]);
+  const [forms, setForms] = useState([]);
+
+  const prodFav= forms.favorites
+
+  async function getUser() {
+    const User = await api.get(`user/${userData._id}`);
+    const { data } = User;
+    setUserInformations(data);
+    setForms(data);
+    setDependecies(data)
+  }
 
   useEffect(() => {
-    // Recuperar informações dos produtos favoritos do localStorage
-    const favorites = JSON.parse(localStorage.getItem('favorites')) || [];
+    getUser();
+  }, [forms]);
 
-    // Verificar se o produto atual está nos favoritos
-    const isFavorite = favorites.some((fav) => fav._id === _id);
-
-    setFavorite(isFavorite); // Atualizar o estado de favorito com base nas informações do localStorage
-  }, []);
 
   async function handleClick() {
     try {
@@ -38,7 +45,6 @@ function Cards({ src, name, author, price, _id, obj }) {
       updateFavoritesStorage(productId);
     } catch (error) {
       console.log(error);
-      alert(error.message);
     }
   }
 
@@ -48,17 +54,17 @@ function Cards({ src, name, author, price, _id, obj }) {
       console.log(response.data.message);
     } catch (error) {
       console.log(error);
-  
     }
   }
 
   async function removeFavorite(userId, productId) {
     try {
-      const response = await api.delete(`/user/${userId}/favorites/${productId}`);
+      const response = await api.delete(
+        `/user/${userId}/favorites/${productId}`
+      );
       console.log(response.data.message);
     } catch (error) {
       console.log(error);
-     
     }
   }
 
@@ -70,7 +76,7 @@ function Cards({ src, name, author, price, _id, obj }) {
   }
 
   function updateFavoritesStorage(productId) {
-    const favorites = JSON.parse(localStorage.getItem('favorites')) || [];
+    const favorites = JSON.parse(localStorage.getItem("favorites")) || [];
 
     const updatedFavorites = favorites.filter((fav) => fav._id !== productId);
 
@@ -79,13 +85,17 @@ function Cards({ src, name, author, price, _id, obj }) {
       updatedFavorites.push(product);
     }
 
-    localStorage.setItem('favorites', JSON.stringify(updatedFavorites));
+    localStorage.setItem("favorites", JSON.stringify(updatedFavorites));
   }
 
   return (
     <div className="product-card">
       <div className="product-tumb">
-        <img src={`${process.env.REACT_APP_API}/${src}`} id="img-card" alt="Denim Jeans" />
+        <img
+          src={`${process.env.REACT_APP_API}/${src}`}
+          id="img-card"
+          alt="Denim Jeans"
+        />
       </div>
       <div className="product-details">
         <span className="product-catagory">
@@ -98,14 +108,20 @@ function Cards({ src, name, author, price, _id, obj }) {
           <div className="product-price">R${price}</div>
           <div className="product-links">
             <a href="">
-              {' '}
+              {" "}
               <AiOutlineShopping id="icon-info" />
             </a>
-            <button className="fs-5" onClick={handleClick}>
-              {favorite ? <AiFillHeart id='icon-fav-1' /> : <MdFavoriteBorder id="icon-fav-2" />}
-            </button>
+            {userData.isLogged ?<button className="fs-5" onClick={handleClick}>
+              {prodFav == _id ? (
+                <AiFillHeart id="icon-fav-1"  />
+              ) : (
+                <MdFavoriteBorder
+                  id="icon-fav-2"
+                />
+              )}
+            </button> : null}
             <a href={`/details/${_id}`}>
-              {' '}
+              {" "}
               <AiOutlineInfoCircle id="icon-info" />
             </a>
           </div>
