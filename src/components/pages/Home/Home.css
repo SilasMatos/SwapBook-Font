@@ -31,8 +31,22 @@
   color: #008ECC;
   width: 30px;
 }
-
-
+#link-filter{
+  text-decoration: none;
+}
+#icon-filter{
+  margin-top: 2px;
+  font-size: 16pt;
+}
+.btn-run-filter{
+  display: flex;
+  justify-content: end;
+}
+.btn-run-filter2{
+  display: flex;
+  align-items: center;
+  font-size: 17pt;
+}
 
 #slider-edit{
   padding-bottom: 1rem;
@@ -56,8 +70,8 @@
   font-weight: 700;
 }
 #link-tx{
-  color: black;
- 
+  color: rgb(85, 83, 83);
+  display: flex;
 text-decoration: none;
 } 
 .btn_map{

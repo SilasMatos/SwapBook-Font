@@ -11,13 +11,14 @@ import { Link } from "react-router-dom";
 import { useContext } from "react";
 import { UserContext } from "../../UseContext/UserContext.js";
 import { GoLocation } from "react-icons/go";
-import {BsBook} from "react-icons/bs"
+import {BsBook, BsArrowRightShort} from "react-icons/bs"
 import "../Home/Home.css";
 import Carousel from "react-bootstrap/Carousel";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import { FcPrevious, FcNext } from "react-icons/fc";
 import Loader from "../../loading/Loader.js";
+
 
 const Home = () => {
   const [index, setIndex] = useState(0);
@@ -79,7 +80,7 @@ const Home = () => {
         `/product/cords?latitude=${latitude}&longitude=${longitude}`
       );
       const { data } = nearProducts;
-      const limitedItens = data.slice(0, 5);
+      const limitedItens = data.slice(0, 100);
       setProductsData(limitedItens);
     } catch (err) {
       console.log("Erro ao carregar os produtos");
@@ -90,7 +91,7 @@ const Home = () => {
     try {
       const Products = await api.get(`/product/`);
       const { data } = Products;
-      const allProducts = data.slice(0, 5);
+      const allProducts = data.slice(0, 100);
       setAllBooks(allProducts);
       setIntProducts(data);
       setLoading(true);
@@ -184,19 +185,17 @@ const Home = () => {
                               />
                             ))}
                           </div>
+                       
                         </Carousel.Item>
                       ))}
             </Carousel>
+            <div  className="container btn-run-filter"><Link id="link-filter" to="/categorias"><div className="btn-run-filter2"><p>Veja mais</p><BsArrowRightShort id="icon-filter"/></div></Link></div>
             </div>
-            <div className=" link_map">
         
-          <Link id="link-tx" to="/categorias">
-            <button className="btn_map link_map">
-              Ver Mais <BsBook className="ml-2" id="icon-map" />
-            </button>
-          </Link>
+      
+      
 
-      </div>               
+          
             <Trotes />
             <div className="container">
       <h2 id="edit-h2">
@@ -227,6 +226,7 @@ const Home = () => {
           </Carousel.Item>
         ))}
       </Carousel>
+      <div  className="container btn-run-filter"><Link id="link-filter" to="/categorias"><div className="btn-run-filter2"><p>Veja mais</p><BsArrowRightShort id="icon-filter"/></div></Link></div>
       <div className=" link_map">
         {userData.isLogged ? (
           <Link id="link-tx" to="/map_products">

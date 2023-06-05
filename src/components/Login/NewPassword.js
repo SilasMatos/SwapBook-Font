@@ -9,7 +9,6 @@ import { useNavigate } from 'react-router-dom'
 import Swal from 'sweetalert2';
 import withReactContent from 'sweetalert2-react-content';
 
-
 const NewPassword = () => {
   const [currentPassword, setCurrentPassword] = useState("");
   const [newPassword, setNewPassword] = useState("");
@@ -18,7 +17,6 @@ const NewPassword = () => {
   const navigate = useNavigate()
   const [userData] = useContext(UserContext);
   const MySwal = withReactContent(Swal)
-
 
   const handleCurrentPasswordChange = (e) => {
     setCurrentPassword(e.target.value);
@@ -38,28 +36,32 @@ const NewPassword = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-  
-    try {
-      const response = await api.put(
-        `/user/${userData._id}`,
-        { password: newPassword, currentPassword },
-        { headers: { auth: `${userData._id}` } }
-      );
-      MySwal.fire({
-        title: 'Sucesso!',
-        text: 'Senha alterada com sucesso!',
-        icon: 'success',
-        confirmButtonText: 'Ok',
-        didOpen: () => {
-          // `MySwal` is a subclass of `Swal` with all the same instance & static methods
-          MySwal.stopTimer()
-        },
-      })
-      navigate('/')
-    } catch (err) {
-      alert(`Falha ao alterar a senha do usuário`);
+
+    if (currentPassword && newPassword) {
+      try {
+        const response = await api.put(
+          `/user/${userData._id}`,
+          { password: newPassword, currentPassword },
+          { headers: { auth: `${userData._id}` } }
+        );
+        MySwal.fire({
+          title: 'Sucesso!',
+          text: 'Senha alterada com sucesso!',
+          icon: 'success',
+          confirmButtonText: 'Ok',
+          didOpen: () => {
+            MySwal.stopTimer()
+          },
+        })
+        navigate('/')
+      } catch (err) {
+        alert(`Falha ao alterar a senha do usuário`);
+      }
+    } else {
+      alert("Por favor, preencha todos os campos");
     }
   };
+
   return (
     <div className="container-senha">
       <div className="form-wrapper-senha">
@@ -125,7 +127,7 @@ const NewPassword = () => {
             </div>
           </div>
           <div className="form-btn">
-            <button className="btn-donate" type="submit">
+            <button className="btn-donate" type="submit" disabled={!currentPassword || !newPassword}>
               Alterar senha
             </button>
           </div>

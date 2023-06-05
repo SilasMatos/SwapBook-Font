@@ -5,6 +5,7 @@ import Cards from "../../Cards/Cards";
 import api from "../../../Services/Api";
 import Loader from "../../loading/Loader";
 import { RiEmotionSadLine } from "react-icons/ri";
+import '../categories/Categorias.css'
 
 const Categories = () => {
   const [products, setProducts] = useState([]);
@@ -34,15 +35,20 @@ const Categories = () => {
 
 
   function getSearchProducts(name) {
-    
     const filteredProducts = products.filter((product) =>
       product.category.toLowerCase().includes(name.toLowerCase())
     );
     setFilteredData(filteredProducts);
     setDependencies(true);
-    
-  }
 
+    const checkboxes = document.querySelectorAll('.ui-checkbox');
+    checkboxes.forEach((checkbox) => {
+      if (checkbox.value !== name) {
+        checkbox.checked = false;
+      }
+    });
+  }
+  
   function getPriceProducts(price) {
     
     const filteredProducts = products.filter((product) =>
@@ -57,53 +63,59 @@ const Categories = () => {
       product.state.toLowerCase().includes(name.toLowerCase())
     );
     setState(filteredProducts);
+    
   }
   console.log(state)
   return (
     <div>
       <Navbar2 />
-
+    <div className="container-fluid">
       <div className="container">
       <div className={styles.container}>
         <div className={`${styles.filters} fs-5`}>
           <div className={`${styles.generes} select-Categories pb-10`}>
             <div  clasName="small-tittle mb-5 ">
-              <h4>Filtro por Gêneros</h4>
-              <label  class="container ">
+              <h5>Filtro por Gêneros</h5>
+              <label  class="container">
+              <input  class="ui-checkbox" id="check-edit" type="checkbox" value="" onClick={(e)=>{setDependencies(false)}}/>
               Todos
-              <input type="checkbox" value="" onClick={(e)=>{setDependencies(false)}}/>
               <span class="checkmark"></span>
             </label>
             <label  class="container ">
+              <input class="ui-checkbox" id="check-edit" type="checkbox" value="Historia" onClick={(e)=>{getSearchProducts(e.target.value)}}/>
               Historia
-              <input type="checkbox" value="Historia" onClick={(e)=>{getSearchProducts(e.target.value)}}/>
               <span class="checkmark"></span>
             </label>
             <label class="container">
+              <input class="ui-checkbox" id="check-edit" type="checkbox" value="Terror" onClick={(e)=>{getSearchProducts(e.target.value)}} />
               Terror
-              <input type="checkbox" value="Terror" onClick={(e)=>{getSearchProducts(e.target.value)}} />
               <span class="checkmark"></span>
             </label>
             <label class="container">
+              <input class="ui-checkbox" id="check-edit" type="checkbox" value="Romance" onClick={(e)=>{getSearchProducts(e.target.value)}}/>
             Romance
-              <input type="checkbox" value="Romance" onClick={(e)=>{getSearchProducts(e.target.value)}}/>
               <span class="checkmark"></span>
             </label>
             <label class="container">
+              <input class="ui-checkbox" id="check-edit" type="checkbox" value="Ficção" onClick={(e)=>{getSearchProducts(e.target.value)}}/>
             Ficção
-              <input type="checkbox" value="Ficção" onClick={(e)=>{getSearchProducts(e.target.value)}}/>
               <span class="checkmark"></span>
             </label>
             <label class="container">
+              <input class="ui-checkbox" id="check-edit" type="checkbox" value="Biografia" onClick={(e)=>{getSearchProducts(e.target.value)}} />
               Biografia
-              <input type="checkbox" value="Biografia" onClick={(e)=>{getSearchProducts(e.target.value)}} />
+              <span class="checkmark"></span>
+            </label>
+            <label class="container">
+              <input class="ui-checkbox" id="check-edit" type="checkbox" value="Estudos" onClick={(e)=>{getSearchProducts(e.target.value)}} />
+                Estudos             
               <span class="checkmark"></span>
             </label>
             </div>
           </div>
 
           <div className="SliderContainer">
-            <h4>Filtre pelo preço</h4>
+            <h5>Filtre pelo preço</h5>
             <div className="Slider">
               <input
                 className="Slider_input mt-3"
@@ -119,60 +131,43 @@ const Categories = () => {
             </div>
           </div>
           <div className="select-Categories pb-10">
-            <div className={`${styles.generes} fs-1 small-tittle mb-5`}>
-              <h4>Filtro por Estado</h4>
+            <div className={`${styles.generes} fs-1 small-tittle `}>
+              <h5>Filtro por Estado</h5>
             </div>
             <label class="container">
+              <input class="ui-checkbox" id="check-edit" type="checkbox" value="Novo" onClick={(e)=>{getState(e.target.value)}}/>
               Novo
-              <input type="checkbox" value="Novo" onClick={(e)=>{getState(e.target.value)}}/>
               <span class="checkmark"></span>
             </label>
             <label class="container">
+              <input class="ui-checkbox" id="check-edit" type="checkbox" value="Muito bom" onClick={(e)=>{getState(e.target.value)}}/>
               Muito Bom
-              <input type="checkbox" value="Muito bom" onClick={(e)=>{getState(e.target.value)}}/>
               <span class="checkmark"></span>
             </label>
             <label class="container">
+              <input class="ui-checkbox" id="check-edit" type="checkbox" value="Bom" onClick={(e)=>{getState(e.target.value)}}/>
               Bom
-              <input type="checkbox" value="Bom" onClick={(e)=>{getState(e.target.value)}}/>
               <span class="checkmark"></span>
             </label>
             <label class="container">
+              <input class="ui-checkbox" id="check-edit" type="checkbox" value="Regular" onClick={(e)=>{getState(e.target.value)}}/>
               Regular
-              <input type="checkbox" value="Regular" onClick={(e)=>{getState(e.target.value)}}/>
               <span class="checkmark"></span>
             </label>
             <label class="container">
+              <input class="ui-checkbox" id="check-edit" type="checkbox" value="Ruim" onClick={(e)=>{getState(e.target.value)}}/>
               Ruim
-              <input type="checkbox" value="Ruim" onClick={(e)=>{getState(e.target.value)}}/>
               <span class="checkmark"></span>
             </label>
           </div>
         </div>
 
-        <div>
-          <h5>Livros</h5>
-          <div className="d-flex flex-wrap ">
-            {loading ? <Loader/> : null}
-            {state.length === 0 && !dependencies && priceFilter.length === 0 ? (
-  products.map((product) => (
-    <div className={styles.Cards_Generes}>
-      <Cards
-        key={product._id}
-        name={product.name}
-        _id={product._id}
-        price={product.price}
-        author={product.author}
-        synopsis={product.synopsis}
-        src={product.src}
-        obj={product}
-      />
-    </div>
-  ))
-) : (
-  priceFilter.length > 0 ? (
-    priceFilter.map((product) => (
-      <div className={styles.Cards_Generes}>
+        <div className="cont-product">
+        <div className="row">
+  {loading ? <Loader /> : null}
+  {state.length === 0 && !dependencies && priceFilter.length === 0 ? (
+    products.map((product) => (
+      <div className="col-lg-4 col-md-4 col-sm-12 col-xs-12">
         <Cards
           key={product._id}
           name={product.name}
@@ -186,9 +181,9 @@ const Categories = () => {
       </div>
     ))
   ) : (
-    dependencies ? (
-      filteredData.map((product) => (
-        <div className={styles.Cards_Generes}>
+    priceFilter.length > 0 ? (
+      priceFilter.map((product) => (
+        <div className="col-lg-4 col-md-4 col-sm-12 col-xs-12">
           <Cards
             key={product._id}
             name={product.name}
@@ -202,9 +197,9 @@ const Categories = () => {
         </div>
       ))
     ) : (
-      state.length > 0 ? (
-        state.map((product) => (
-          <div className={styles.Cards_Generes}>
+      dependencies ? (
+        filteredData.map((product) => (
+          <div className="col-lg-4 col-md-4 col-sm-12 col-xs-12">
             <Cards
               key={product._id}
               name={product.name}
@@ -217,17 +212,37 @@ const Categories = () => {
             />
           </div>
         ))
-      ) : <div className="col-not-anum">
-      <RiEmotionSadLine id="icon-not-anum" />
-      <p>Você não possui livros favoritados no momento</p>
-    </div>
+      ) : (
+        state.length > 0 ? (
+          state.map((product) => (
+            <div className="col-lg-4 col-md-4 col-sm-12 col-xs-12">
+              <Cards
+                key={product._id}
+                name={product.name}
+                _id={product._id}
+                price={product.price}
+                author={product.author}
+                synopsis={product.synopsis}
+                src={product.src}
+                obj={product}
+              />
+            </div>
+          ))
+        ) : (
+          <div className="col-not-anum col-lg-12 col-md-12 col-sm-12 col-xs-12">
+            <RiEmotionSadLine id="icon-not-anum" />
+            <p>Você não possui livros favoritados no momento</p>
+          </div>
+        )
+      )
     )
-  )
-)}
+  )}
+
 
           </div>
         </div>
       </div>
+    </div>
     </div>
     </div>
   );

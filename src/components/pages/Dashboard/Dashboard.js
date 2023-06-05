@@ -29,7 +29,7 @@ const Dashboard = () => {
     const inputValue = e.target.value;
     const numericValue = inputValue.replace(/[^\d]/g, '');
     if (numericValue.length === 4 || numericValue.length === 5) {
-    const formattedValue = numericValue.slice(0, -2) + ',' + numericValue.slice(-2);
+      const formattedValue = numericValue.slice(0, -2) + '.' + numericValue.slice(-2);
       setProductPrice(formattedValue);
     } else {
       setProductPrice(numericValue);
