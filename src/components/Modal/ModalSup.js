@@ -9,8 +9,7 @@ function ModalTc() {
   const handleClose = () => setShow(false);
   const handleSubmit = (e) => {
     e.preventDefault();
-    // Lógica para lidar com o envio do formulário
-    // Você pode adicionar a lógica de envio para o suporte aqui
+
     handleClose();
   };
   return (

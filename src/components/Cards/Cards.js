@@ -48,7 +48,7 @@ function Cards({ src, name, author, price, _id, obj }) {
       console.log(response.data.message);
     } catch (error) {
       console.log(error);
-      alert('Error adding favorite');
+  
     }
   }
 

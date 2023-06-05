@@ -19,7 +19,7 @@ import UpdateBook from '../components/pages/UpdateBook/UpdateBook'
 import UserShow from '../components/pages/UserShow/UserShow'
 import UpdateUser from '../components/pages/UpdateUser/UpdateUser'
 import Favoritos from '../components/pages/Favoritos/Favoritos'
-
+import NewPassword from '../components/Login/NewPassword'
 const Rotas = () => {
     const [userData, setUserData] = useContext(UserContext)
     return (
@@ -43,6 +43,7 @@ const Rotas = () => {
                         userData.isLogged ? <Dashboard /> : <Navigate to="/" />
                     }
                 />
+                
                 <Route
                     path="/updateUser"
                     element={
@@ -59,6 +60,7 @@ const Rotas = () => {
                  <Route exact path="/favoritos" Component={Favoritos} />
                 <Route exact path="/chat" Component={ChatPage} />
                 <Route exact path="/registrar" Component={RegisterPage} />
+                <Route exact path="/newpassword" Component={NewPassword} />
                 <Route
                     path="/map_products"
                     element={

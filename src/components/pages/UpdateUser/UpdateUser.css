@@ -1,7 +1,7 @@
 @import url("../UpdateUser/StyleP&S.css");
 
 .container-up-2 {
-  background-color: #f1efef;
+  background-color: #fff;
   padding: 20px;
   margin-top: 20px;
   border-radius: 10px;
@@ -25,6 +25,7 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
+  
 }
 
 .cont-itens-icon {
@@ -85,6 +86,7 @@
   margin-bottom: 18px;
   display: flex;
   align-self: center;
+  background-color: #f2f2f2;
 }
 
 .tx-up {
@@ -94,11 +96,11 @@
 
 .tx-p-up {
   margin-top: 15px;
-  color: #b8b8b8;
+  color: #c6c4c4;
 }
 
 .itens-dados-up {
-  background-color: #f1efef;
+  background-color: #fff;
   padding: 20px;
   border-radius: 10px;
   margin-top: 20px;
@@ -250,4 +252,10 @@
   .tx-up {
     font-size: 24pt;
   }
+}
+html, body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  background-color: #f2f2f2;
 }
