@@ -1,4 +1,5 @@
 import React, { useState, useContext, useEffect } from 'react';
+import { hash } from 'bcryptjs';
 import '../UpdateUser/UpdateUser.css';
 import Navbar2 from '../../Navbar2/Navbar2';
 import Footer from '../../Footer/Footer';
@@ -11,12 +12,16 @@ import { UserContext } from '../../UseContext/UserContext';
 import ModalSecurity from '../../Modal/ModalSecurity';
 import api from '../../../Services/Api';
 import { Link } from 'react-router-dom';
+import Swal from 'sweetalert2';
+import withReactContent from 'sweetalert2-react-content';
+
 
 function UpdateUser() {
   const [divExibida, setDivExibida] = useState('informacoesPessoais');
   const [userData, setUserData] = useContext(UserContext);
   const [userInformations, setUserInformations] = useState([]);
   const [dependencies, setDependencies] = useState(false);
+  const MySwal = withReactContent(Swal)
   const [forms, setForms] = useState({
     name: '',
     email: '',
@@ -51,9 +56,17 @@ function UpdateUser() {
       const response = await api.put(`/user/${userData._id}`, forms, {
         headers: { auth: `${userData._id}` },
       });
-      alert("Usuário atualizado com sucesso!");
+      MySwal.fire({
+        title: 'Sucesso!',
+        text: 'Dados alterados com sucesso!',
+        icon: 'success',
+        confirmButtonText: 'Ok',
+        didOpen: () => {
+          MySwal.stopTimer()
+        },
+      })
     } catch (err) {
-      alert(`Falha ao atualizar usuário ${userData._id}`);
+      
     }
   }
 
@@ -63,9 +76,9 @@ function UpdateUser() {
       const response = await api.delete(`/user/${userData._id}`, {
         headers: { auth: `${userData._id}` },
       });
-      alert("Usuário excluído com sucesso!");
+      
     } catch (err) {
-      alert(`Falha ao excluir usuário`);
+      
     }
   }
 

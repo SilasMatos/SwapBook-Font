@@ -33,14 +33,13 @@ const NewPassword = () => {
   const handleShowNewPassword = () => {
     setShowNewPassword(!showNewPassword);
   };
-
   const handleSubmit = async (e) => {
     e.preventDefault();
   
     if (currentPassword && newPassword) {
       try {
         const response = await api.put(
-          `/user/${userData._id}`,
+          `/user/password/${userData._id}`,
           { password: newPassword, currentPassword },
           { headers: { auth: `${userData._id}` } }
         );
@@ -74,7 +73,6 @@ const NewPassword = () => {
     }
   };
   
-
   return (
     <div className="container-senha">
       <div className="form-wrapper-senha">

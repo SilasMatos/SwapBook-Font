@@ -81,12 +81,7 @@ const Dashboard = () => {
           <form>
           <div className="cont-03">
             <h3 className="text-center">Adicione seus Livros</h3>
-            <div className="col-input-00">
-            <input type="checkbox" id="cliente-pj" name="cliente" value="pj" />
-            <label for="cliente-pj"><p>Cliente PJ</p></label>
-            <input type="checkbox" id="cliente-fisico" name="cliente" value="fisico" />
-            <label for="cliente-fisico"><p>Cliente Físico</p></label>
-            </div>
+           
             <div className="col-input-01">
             <input type="text" className="form-control input-edit" onChange={(e) => setProductName(e.target.value)} placeholder="Nome do Livro" value={productName} />
             <input type="text" className="form-control input-edit" placeholder="Autor" value={autorProduct} onChange={(e) => setAutorProduct(e.target.value)} />
