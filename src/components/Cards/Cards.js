@@ -3,19 +3,37 @@ import { UserContext } from '../UseContext/UserContext';
 import { AiOutlineHeart, AiFillHeart } from 'react-icons/ai';
 import { AiOutlineInfoCircle, AiOutlineShopping } from 'react-icons/ai';
 import { MdFavoriteBorder } from 'react-icons/md';
+import { useNavigate } from 'react-router-dom';
+
 import api from '../../Services/Api.js';
 import './cardsStyle.css';
-
-function Cards({ src, name, author, price, _id, obj }) {
+function Cards({ src, name, author, price, _id, obj, props }) {
   const [cart, setCart] = useState([]);
   const [userData] = useContext(UserContext);
   const [favorite, setFavorite] = useState(false); 
+  const navigate = useNavigate();
+
+ // Front-end code
+const handleChatOpen = async () => {
+  const userid = getUserId()
+  try {
+    const response = await api.post('/chats', {
+      
+      user: userid,
+      message: 'Mensagem de exemplo',
+      username: 'Nome de usuário'
+    });
+    
+    const chatId = response.data.chatId;
+    navigate(`/chat/${chatId}`);
+  } catch (error) {
+    console.error('Erro ao iniciar a conversa:', error);
+    alert(error)
+  }
+};
 
   useEffect(() => {
-
     const favorites = JSON.parse(localStorage.getItem('favorites')) || [];
-
-   
     const isFavorite = favorites.some((fav) => fav._id === _id);
 
     setFavorite(isFavorite); 
@@ -81,6 +99,8 @@ function Cards({ src, name, author, price, _id, obj }) {
     localStorage.setItem('favorites', JSON.stringify(updatedFavorites));
   }
 
+
+
   return (
     <div className="product-card">
       <div className="product-tumb">
@@ -98,7 +118,7 @@ function Cards({ src, name, author, price, _id, obj }) {
           <div className="product-links">
             <a href="">
               {' '}
-              <AiOutlineShopping id="icon-info" />
+              <AiOutlineShopping id="icon-info" onClick={handleChatOpen} />
             </a>
             <button className="fs-5" onClick={handleClick}>
               {favorite ? <AiFillHeart id='icon-fav-1' /> : <MdFavoriteBorder id="icon-fav-2" />}
