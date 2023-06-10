@@ -3,7 +3,8 @@ import {
     BrowserRouter as Router,
     Routes,
     Route,
-    Navigate
+    Navigate,
+    useLocation
 } from 'react-router-dom'
 import Home from '../components/pages/Home/Home'
 import Dashboard from '../components/pages/Dashboard/Dashboard'
@@ -21,10 +22,24 @@ import UpdateUser from '../components/pages/UpdateUser/UpdateUser'
 import Favoritos from '../components/pages/Favoritos/Favoritos'
 import NewPassword from '../components/Login/NewPassword'
 import Categories from '../components/pages/categories/Categories'
+import { useEffect } from 'react'
+
+
+
+function ToTop(){
+    const {pathname} = useLocation();
+    useEffect(()=>{
+        window.scrollTo(0,0);
+
+    },[pathname]);
+    return null;
+}
 const Rotas = () => {
+    
     const [userData, setUserData] = useContext(UserContext)
     return (
         <Router>
+            <ToTop/>
             <Routes>
                 <Route exact path="/" Component={Home} />
                 <Route

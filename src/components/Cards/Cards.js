@@ -3,37 +3,19 @@ import { UserContext } from '../UseContext/UserContext';
 import { AiOutlineHeart, AiFillHeart } from 'react-icons/ai';
 import { AiOutlineInfoCircle, AiOutlineShopping } from 'react-icons/ai';
 import { MdFavoriteBorder } from 'react-icons/md';
-import { useNavigate } from 'react-router-dom';
-
 import api from '../../Services/Api.js';
 import './cardsStyle.css';
-function Cards({ src, name, author, price, _id, obj, props }) {
+
+function Cards({ src, name, author, price, _id, obj }) {
   const [cart, setCart] = useState([]);
   const [userData] = useContext(UserContext);
   const [favorite, setFavorite] = useState(false); 
-  const navigate = useNavigate();
-
- // Front-end code
-const handleChatOpen = async () => {
-  const userid = getUserId()
-  try {
-    const response = await api.post('/chats', {
-      
-      user: userid,
-      message: 'Mensagem de exemplo',
-      username: 'Nome de usuário'
-    });
-    
-    const chatId = response.data.chatId;
-    navigate(`/chat/${chatId}`);
-  } catch (error) {
-    console.error('Erro ao iniciar a conversa:', error);
-    alert(error)
-  }
-};
 
   useEffect(() => {
+
     const favorites = JSON.parse(localStorage.getItem('favorites')) || [];
+
+   
     const isFavorite = favorites.some((fav) => fav._id === _id);
 
     setFavorite(isFavorite); 
@@ -55,7 +37,6 @@ const handleChatOpen = async () => {
       updateFavoritesStorage(productId);
     } catch (error) {
       console.log(error);
-      alert(error.message);
     }
   }
 
@@ -65,7 +46,6 @@ const handleChatOpen = async () => {
       console.log(response.data.message);
     } catch (error) {
       console.log(error);
-      alert('Error adding favorite');
     }
   }
 
@@ -99,8 +79,6 @@ const handleChatOpen = async () => {
     localStorage.setItem('favorites', JSON.stringify(updatedFavorites));
   }
 
-
-
   return (
     <div className="product-card">
       <div className="product-tumb">
@@ -118,11 +96,11 @@ const handleChatOpen = async () => {
           <div className="product-links">
             <a href="">
               {' '}
-              <AiOutlineShopping id="icon-info" onClick={handleChatOpen} />
+              <AiOutlineShopping id="icon-info" />
             </a>
-            <button className="fs-5" onClick={handleClick}>
+            {userData.isLogged ? <button className="fs-5" onClick={handleClick}>
               {favorite ? <AiFillHeart id='icon-fav-1' /> : <MdFavoriteBorder id="icon-fav-2" />}
-            </button>
+            </button> : null}
             <a href={`/details/${_id}`}>
               {' '}
               <AiOutlineInfoCircle id="icon-info" />

@@ -87,6 +87,7 @@ const RegisterPage = () => {
 
 
   return (
+    <div className='cont-centrer'>
     <div className='col-login1 container'>
     <div className='col-login2'>
       <div className='col-login3'>
@@ -204,7 +205,7 @@ const RegisterPage = () => {
       </div>
     </div>
   </div>
-
+  </div>
   );
 };
 

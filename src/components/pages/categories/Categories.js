@@ -70,7 +70,7 @@ const Categories = () => {
     <div>
       <Navbar2 />
     <div className="container-fluid">
-      <div className="container">
+      <div className="container-fluid">
       <div className={styles.container}>
         <div className={`${styles.filters} fs-5`}>
           <div className={`${styles.generes} select-Categories pb-10`}>
@@ -163,11 +163,11 @@ const Categories = () => {
         </div>
 
         <div className="cont-product">
-        <div className="row">
+        <div className="col-card-filter">
   {loading ? <Loader /> : null}
   {state.length === 0 && !dependencies && priceFilter.length === 0 ? (
     products.map((product) => (
-      <div className="col-lg-4 col-md-4 col-sm-12 col-xs-12">
+      <div className="col-card-filter">
         <Cards
           key={product._id}
           name={product.name}
@@ -183,7 +183,7 @@ const Categories = () => {
   ) : (
     priceFilter.length > 0 ? (
       priceFilter.map((product) => (
-        <div className="col-lg-4 col-md-4 col-sm-12 col-xs-12">
+        <div className="col-card-filter">
           <Cards
             key={product._id}
             name={product.name}
@@ -199,7 +199,7 @@ const Categories = () => {
     ) : (
       dependencies ? (
         filteredData.map((product) => (
-          <div className="col-lg-4 col-md-4 col-sm-12 col-xs-12">
+          <div className="col-card-filter">
             <Cards
               key={product._id}
               name={product.name}
@@ -215,7 +215,7 @@ const Categories = () => {
       ) : (
         state.length > 0 ? (
           state.map((product) => (
-            <div className="col-lg-4 col-md-4 col-sm-12 col-xs-12">
+            <div className="col-card-filter">
               <Cards
                 key={product._id}
                 name={product.name}
@@ -229,7 +229,7 @@ const Categories = () => {
             </div>
           ))
         ) : (
-          <div className="col-not-anum col-lg-12 col-md-12 col-sm-12 col-xs-12">
+          <div className="col-card-filter">
             <RiEmotionSadLine id="icon-not-anum" />
             <p>Você não possui livros favoritados no momento</p>
           </div>

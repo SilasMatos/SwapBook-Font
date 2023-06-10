@@ -28,6 +28,7 @@ function Navbar2({ setSearchProducts }) {
         localStorage.setItem('name', '')
         localStorage.setItem('id', '')
         localStorage.removeItem('IsLogged')
+        localStorage.removeItem('favorites')
         await navigate('/')
         window.location.reload(true)
         e.preventDefault()

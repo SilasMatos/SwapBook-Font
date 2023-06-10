@@ -1,0 +1,17 @@
+@import url('https://fonts.googleapis.com/css2?family=Libre+Baskerville&display=swap');
+.edit-mgt{
+    margin-top: 5rem;
+}
+#edit-sin-tx{
+    font-size: 10pt;
+    color: #bab9b9;
+
+}
+.title-edit-details{
+    color: black;
+    font-size: 26pt;
+}
+.tx-sin{
+    font-family: 'Libre Baskerville', serif;
+    font-size: 11pt;
+}

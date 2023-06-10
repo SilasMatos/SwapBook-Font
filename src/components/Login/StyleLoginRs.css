@@ -1,7 +1,13 @@
+.cont-centrer{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-color: #f2f2f2;
+}
 .col-login1{
   border: none;
  
-  margin-top: 2rem;
   background-color: #0093E9;
 background-image: linear-gradient(90deg, #0093E9 0%, #80D0C7 100%);
 border-radius: 50px;
@@ -40,6 +46,10 @@ background-color: #e0e0e0;
 text-decoration: none;
 color: #d0cece;
 margin-left: 2px;
+}
+.etr-edit:hover{
+  color: #ffffff;
+  text-decoration: none;
 }
 .col-login3{
   display: flex;

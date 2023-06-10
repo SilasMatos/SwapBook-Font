@@ -7,6 +7,14 @@
     margin-left: 100px;
 }
 
+.col-card-filter{
+display: flex;
+flex-wrap: wrap;
+gap: 20px; 
+}
+.edit-card-filter{
+  display: flex;
+}
 .ui-checkbox {
     --primary-color: #1677ff;
     --secondary-color: #fff;

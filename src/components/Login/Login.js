@@ -8,6 +8,7 @@ import banner07 from '../img/banner_02.png'
 import logos from '../img/logoFullWhite.png';
 import Swal from 'sweetalert2';
 import withReactContent from 'sweetalert2-react-content';
+import { AiOutlineEyeInvisible, AiOutlineEye } from "react-icons/ai";
 
 
 const LoginPage = () => {
@@ -15,6 +16,7 @@ const LoginPage = () => {
   const [userData, setUserData] = useContext(UserContext)
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
+  
 
   const navigate = useNavigate() 
   const MySwal = withReactContent(Swal)
@@ -52,7 +54,6 @@ const LoginPage = () => {
         icon: 'error',
         confirmButtonText: 'Ok',
         didOpen: () => {
-          // `MySwal` is a subclass of `Swal` with all the same instance & static methods
           MySwal.stopTimer()
         },
       })
@@ -61,6 +62,7 @@ const LoginPage = () => {
   
 
   return (
+    <div className="cont-centrer">
     <div className='col-login1 container'>
       <div className='col-login2'>
         <div className='col-login3'>
@@ -103,6 +105,7 @@ const LoginPage = () => {
         <img alt='img' id='img-lg-mb' src={banner07}></img>
         </div>
       </div>
+    </div>
     </div>
     /*
     <div class="flex flex-row items-center justify-center h-screen bg-gray-100">
@@ -159,6 +162,7 @@ const LoginPage = () => {
       </div>
     </div>      
     
+  </div>
   </div>
   */
   );
