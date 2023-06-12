@@ -1,4 +1,6 @@
 
+  @import url('https://fonts.googleapis.com/css2?family=Amatic+SC:wght@400;700&display=swap');
+
 .my-carousel {
   position: relative;
 }
@@ -93,4 +95,124 @@ text-decoration: none;
 }
 .cards-search{
   margin-top: 6rem;
+}
+
+
+
+.section {
+  background-image: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url('../../img/pexels-dominik-gawlik-12761264.jpg');
+  background-size: cover;
+  background-position: center;
+  height: 400px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 5rem;
+  margin-bottom: 5rem;
+}
+
+
+
+.container {
+}
+
+.section-title {
+  font-size: 110px;
+  color: #ffffff;
+  margin-bottom: 25px;
+  filter: none;
+  font-family: 'Amatic SC', cursive;
+}
+
+.section-slogan {
+  font-size: 14px;
+  color: #ffffff;
+  margin-bottom: 20px;
+}
+
+.section-button {
+  padding: 10px 20px;
+  font-size: 16px;
+  color: #ffffff;
+  background-color: #007bff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+
+
+
+.button-section {
+  position: relative;
+  padding: 15px 35px;
+  font-size: 15px;
+  font-weight: bold;
+  color: #ffffff;
+  background-color: transparent;
+  border: 3px solid #ffffff;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.5s;
+}
+
+.button-section::after {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 10px;
+  left: 10px;
+  background-color: #ffffff;
+  border-radius: 8px;
+  z-index: -1;
+  transition: all 0.5s;
+}
+
+.button-section:hover::after {
+  top: 0;
+  left: 0;
+}
+
+.icon-1 {
+  position: absolute;
+  width: 15%;
+  top: 10px;
+  right: 15px;
+  color: #ffffff;
+  transform-origin: 100% 100%;
+  transform: rotate(-25deg) translateX(120%) translateY(20%);
+  z-index: -1;
+  transition: all 0.5s;
+}
+.fil0{
+  color: #fff;
+}
+#color-svg{
+  color: #fff;
+
+}
+
+.button-section:hover .icon-1 {
+  width: 25%;
+  transform: rotate(10deg) translateX(110%) translateY(-40%);
+}
+
+.icon-2 {
+  position: absolute;
+  width: 15%;
+  top: 20px;
+  left: 10px;
+  color: #ffffff;
+  transform-origin: 100% 100%;
+  z-index: -1;
+  transition: all 0.5s;
+}
+
+.button-section:hover .icon-2 {
+  width: 50%;
+  top: -40px;
+  left: -80px;
+  transform: rotate(90deg);
+  z-index: 1;
 }
