@@ -4,7 +4,17 @@ a
 {
     text-decoration: none;
 }
+#edit-span-icon{
+    background-color: #de2121;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    position: relative;
+    top: 0px;
+    bottom: 0px;
 
+
+}
 .product-card {
     /*#008ECC*/
     width: 200px;
@@ -18,8 +28,27 @@ a
                  -9px -9px 15px #ffffff;
 
 }
-
-
+#icon-troca{
+    color: #008ECC;
+    font-size: 20pt;
+}
+.icon-container2 {
+    position: absolute;
+    top: 7px;
+    right: 7px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 30px;
+    height: 30px;
+    background-color: #ffffff;
+    border-radius: 50%;
+  }
+  
+  .icon-container2 i {
+    font-size: 18px;
+    color: #333333;
+  }
 .product-tumb {
   border-radius: 20px;
   background: #faf9f9;
@@ -28,7 +57,7 @@ a
     justify-content: center;
     height: 250px;
     padding: 15px;
-    
+    position: relative;
   
 }
 

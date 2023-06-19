@@ -147,6 +147,8 @@ const Home = () => {
                   synopsis={product.synopsis}
                   src={product.src}
                   obj = {product}
+                  allowTrade={product.allowTrade}
+                  showOnMap={product.showOnMap}
                 />
               ))}
             </div>
@@ -182,6 +184,7 @@ const Home = () => {
                                 price={product.price}
                                 synopsis={product.synopsis}
                                 obj={product}
+                                allowTrade={product.allowTrade}
                               />
                             ))}
                           </div>
@@ -227,6 +230,7 @@ const Home = () => {
                   price={product.price}
                   synopsis={product.synopsis}
                   obj={product}
+                  allowTrade={product.allowTrade}
                 />
               ))}
             </div>

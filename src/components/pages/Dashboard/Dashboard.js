@@ -7,11 +7,13 @@ import { UserContext } from "../../UseContext/UserContext";
 import { useNavigate } from "react-router-dom";
 import FormData from 'form-data'
 import Footer from "../../Footer/Footer";
-import { FaBook} from 'react-icons/fa';
+import {BsInfoCircleFill} from 'react-icons/bs';
 import ModalAvs from "../../Modal/ModalAvs";
 import Swal from 'sweetalert2';
 import withReactContent from 'sweetalert2-react-content';
 import InputMask from 'react-input-mask';
+import ModalTroca from "../../Modal/ModalTroca";
+import ModalMapa from "../../Modal/ModalMapa";
 const Dashboard = () => {
   const [userData, setUserData] = useContext(UserContext);
   const [productName, setProductName] = useState('')
@@ -22,6 +24,8 @@ const Dashboard = () => {
   const [sisnopseProduct, setSinopseProduct] = useState('')
   const [src, setSrc] = useState('')
   const [state, setState] = useState('')
+  const [allowTrade, setAllowTrade] = useState(false)
+  const [showOnMap, setShowOnMap] = useState(false)
   const navigate = useNavigate()
   const MySwal = withReactContent(Swal)
 
@@ -47,6 +51,8 @@ const Dashboard = () => {
       formData.append('year', productYear);
       formData.append('src', src[0]);
       formData.append('state', state);
+      formData.append('allowTrade', allowTrade);
+      formData.append('showOnMap', showOnMap);
       const response = await api.post(`${userData._id}/product`, formData, 
       { headers: { auth: `${userData._id}` }});
       MySwal.fire({
@@ -81,7 +87,30 @@ const Dashboard = () => {
           <form>
           <div className="cont-03">
             <h3 className="text-center">Adicione seus Livros</h3>
-           
+            <div className="col-input-check">
+              <div className="div-check-edit-1">
+              <div class="checkbox-wrapper-31">
+                   <input checked={allowTrade} onChange={(e) => setAllowTrade(e.target.checked)} type="checkbox"></input>
+                      <svg viewBox="0 0 35.6 35.6">
+                        <circle class="background" cx="17.8" cy="17.8" r="17.8"></circle>
+                        <circle class="stroke" cx="17.8" cy="17.8" r="14.37"></circle>
+                        <polyline class="check" points="11.78 18.12 15.55 22.23 25.17 12.87"></polyline>
+                      </svg>
+                </div>
+                <label for="allowTrade">Permitir Trocas</label><ModalTroca/>
+              </div>
+              <div className="div-check-edit-2">
+              <div class="checkbox-wrapper-31">
+                   <input checked={showOnMap} onChange={(e) => setShowOnMap(e.target.checked)} type="checkbox"></input>
+                      <svg viewBox="0 0 35.6 35.6">
+                        <circle class="background" cx="17.8" cy="17.8" r="17.8"></circle>
+                        <circle class="stroke" cx="17.8" cy="17.8" r="14.37"></circle>
+                        <polyline class="check" points="11.78 18.12 15.55 22.23 25.17 12.87"></polyline>
+                      </svg>
+                </div>
+                  <label for="showOnMap">Mostrar no Mapa</label><ModalMapa/>
+              </div>
+            </div>
             <div className="col-input-01">
             <input type="text" className="form-control input-edit" onChange={(e) => setProductName(e.target.value)} placeholder="Nome do Livro" value={productName} />
             <input type="text" className="form-control input-edit" placeholder="Autor" value={autorProduct} onChange={(e) => setAutorProduct(e.target.value)} />
@@ -132,6 +161,7 @@ const Dashboard = () => {
               <option value="Ruim">Ruim</option>
             </select>
             </div>
+        
         <div className="col-input-04">
                  <div className="input-wrapper">
                   <input  type="file" multiple onChange={(e) => setSrc(e.target.files)} />
@@ -145,11 +175,11 @@ const Dashboard = () => {
              </div>
              )}
             </div>
-            <div className="col-input-05">
+         
             <button className="btn btn-form-edit" onClick={newProducthandler}>
           Adicionar Livro
         </button>
-            </div>
+           
           </div>
           </form>
         </div>

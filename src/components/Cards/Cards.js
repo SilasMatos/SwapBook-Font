@@ -1,21 +1,20 @@
 import React, { useState, useContext, useEffect } from 'react';
 import { UserContext } from '../UseContext/UserContext';
 import { AiOutlineHeart, AiFillHeart } from 'react-icons/ai';
+import { MdOutlineSwapHorizontalCircle } from 'react-icons/md';
 import { AiOutlineInfoCircle, AiOutlineShopping } from 'react-icons/ai';
 import { MdFavoriteBorder } from 'react-icons/md';
 import api from '../../Services/Api.js';
+import ModalTrocaTrue from "../Modal/ModalTrocaTrue"
 import './cardsStyle.css';
 
-function Cards({ src, name, author, price, _id, obj }) {
+function Cards({ src, name, author, price, _id, obj, allowTrade }) {
   const [cart, setCart] = useState([]);
   const [userData] = useContext(UserContext);
   const [favorite, setFavorite] = useState(false); 
 
   useEffect(() => {
-
     const favorites = JSON.parse(localStorage.getItem('favorites')) || [];
-
-   
     const isFavorite = favorites.some((fav) => fav._id === _id);
 
     setFavorite(isFavorite); 
@@ -55,7 +54,6 @@ function Cards({ src, name, author, price, _id, obj }) {
       console.log(response.data.message);
     } catch (error) {
       console.log(error);
-     
     }
   }
 
@@ -84,6 +82,13 @@ function Cards({ src, name, author, price, _id, obj }) {
       <div className="product-tumb">
         <img src={`${process.env.REACT_APP_API}/${src}`} id="img-card" alt="Denim Jeans" />
       </div>
+      {allowTrade && (
+        <div className="icon-container2">
+          <i className="fas fa-thumbs-up">
+            <ModalTrocaTrue/>
+          </i>
+        </div>
+      )}
       <div className="product-details">
         <span className="product-catagory">
           Por <span id="author-edit">{author}</span>
@@ -98,9 +103,11 @@ function Cards({ src, name, author, price, _id, obj }) {
               {' '}
               <AiOutlineShopping id="icon-info" />
             </a>
-            {userData.isLogged ? <button className="fs-5" onClick={handleClick}>
-              {favorite ? <AiFillHeart id='icon-fav-1' /> : <MdFavoriteBorder id="icon-fav-2" />}
-            </button> : null}
+            {userData.isLogged && (
+              <button className="fs-5" onClick={handleClick}>
+                {favorite ? <AiFillHeart id='icon-fav-1' /> : <MdFavoriteBorder id="icon-fav-2" />}
+              </button>
+            )}
             <a href={`/details/${_id}`}>
               {' '}
               <AiOutlineInfoCircle id="icon-info" />

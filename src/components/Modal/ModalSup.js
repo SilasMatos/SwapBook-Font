@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { Modal, Button, Form } from "react-bootstrap";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import '../Footer/Footer.css'
-
+import {BsInfoCircleFill} from 'react-icons/bs';
 function ModalTc() {
   const [showModal, setShowModal] = useState(false);
   const [show, setShow] = useState(false);
