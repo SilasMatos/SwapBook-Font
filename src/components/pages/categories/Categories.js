@@ -74,7 +74,7 @@ const Categories = () => {
       <div className={styles.container}>
         <div className={`${styles.filters} fs-5`}>
           <div className={`${styles.generes} select-Categories pb-10`}>
-            <div  clasName="small-tittle mb-5 ">
+            <div  clasName="">
               <h5>Filtro por Gêneros</h5>
               <label  class="container">
               <input  class="ui-checkbox" id="check-edit" type="checkbox" value="" onClick={(e)=>{setDependencies(false)}}/>

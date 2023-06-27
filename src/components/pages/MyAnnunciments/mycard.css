@@ -5,11 +5,12 @@
   position: relative;
   display: flex;
   background-color: #ffffff;
+  align-items: center;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   border-radius: 8px;
   overflow: hidden;
-  width: 490px;
-  height: 280px;
+  width: 520px;
+  height: 420px;
   margin: 20px;
   border: 1px solid #ccc;
 }
@@ -17,13 +18,29 @@
 .book-image {
   width: 160px;
   object-fit: cover;
+  height: 100%;
 }
 
 .card-content {
   padding: 16px;
+  display: flex;
+  flex-direction: column;
+  text-align: left;
+  align-items: center;
 }
 
-.book-title {
+.book-title { 
+   font-weight: 800;
+  display: block;
+  text-align: left;
+  margin-bottom: 18px;
+  color: #000000;
+  text-decoration: none;
+  transition: 0.3s;
+  max-height: 3.6em; 
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
   font-size: 20px;
   font-weight: bold;
   margin-bottom: 8px;
@@ -45,7 +62,7 @@
 }
 
 .book-info {
-  margin-bottom: 6px;
+  font-size: 9pt;
   margin-left: 2px;
   margin-right: 2px;
 }
@@ -60,8 +77,6 @@
   right: 42px;
   z-index: 3;
 }
-
-/* Adicione mais estilos conforme necessário */
 
 
 .con-anum{
@@ -125,7 +140,7 @@
   #icon-delete{
    
     color: black;
-    font-size: px;
+    font-size: 10px;
     font-weight: bold;
     width: 18px;
     height: 20px;
@@ -189,3 +204,83 @@
   .div-txt{
     margin-top: 8rem;
   }
+  @media (max-width: 768px) {
+    .edit-cards-my{
+
+      display: flex;
+      flex-direction: column;
+      flex-wrap: wrap;
+  }
+  .book-synopsis {
+    margin-bottom: 12px;
+    font-size: 10px;
+  }
+  .book-title {
+    font-size: 10px;
+    font-weight: bold;
+    margin-bottom: 4px;
+  }
+  .card-anum {
+    position: relative;
+    display: flex;
+    background-color: #ffffff;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    overflow: hidden;
+    width: 360px;
+    height: 260px;
+    margin: 20px;
+    border: 1px solid #ccc;
+  }
+  .title-ca {
+    text-align: center;
+    align-items: center;
+
+    font-size: 11pt;
+    color: #fff;
+    position: absolute;
+    bottom: 10px;
+
+  }
+  
+.book-title {
+  font-size: 18px;
+  font-weight: bold;
+  margin-bottom: 8px;
+}
+
+.book-image {
+  width: 130px;
+  object-fit: cover;
+}
+.card-content {
+  padding: 12px;
+  display: flex;
+  flex-direction: column;
+  text-align: left;
+  align-items: center;
+}
+}
+
+.cont-fav{
+    margin-top: 8rem;
+    
+}
+.cont-fav-tx{
+    display: flex;
+    flex-direction: column;
+}
+#tx-fav{
+    font-size: 28pt;
+    font-weight: 100;
+    color: #5d5c5c;
+    transition: 1s;
+    cursor: s-resize;
+}
+#tx-fav:hover{
+    transition: 1s;
+    color: rgb(40, 40, 40);
+}
+#tx-p-fav{
+    color: #bebcbc;
+}

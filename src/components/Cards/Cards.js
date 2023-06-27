@@ -99,7 +99,7 @@ function Cards({ src, name, author, price, _id, obj, allowTrade }) {
         <div className="product-bottom-details">
           <div className="product-price">R${price}</div>
           <div className="product-links">
-            <a href="">
+            <a href={`/chat/${_id}`}>
               {' '}
               <AiOutlineShopping id="icon-info" />
             </a>

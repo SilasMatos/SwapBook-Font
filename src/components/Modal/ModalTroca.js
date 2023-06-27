@@ -18,7 +18,7 @@ const BookExchangeModal = () => {
           <Modal.Title>Trocas de Livros</Modal.Title>
         </Modal.Header>
         <Modal.Body>
-          <p>e
+          <p>
           A opção de troca de livros permite que outros usuários entrem em contato
             com você para negociar a troca do livro anunciado. Essa é uma ótima
             oportunidade de expandir sua biblioteca pessoal e descobrir novas histórias.
@@ -34,7 +34,7 @@ const BookExchangeModal = () => {
             adquirir novas obras e compartilhar as suas com outras pessoas.</p>
         </Modal.Body>
         <Modal.Footer>
-          <Button variant="secondary" onClick={handleClose}>
+          <Button variant="primary" onClick={handleClose}>
             Fechar
           </Button>
         </Modal.Footer>

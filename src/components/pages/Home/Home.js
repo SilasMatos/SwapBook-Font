@@ -18,6 +18,9 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import { FcPrevious, FcNext } from "react-icons/fc";
 import Loader from "../../loading/Loader.js";
+import AOS from 'aos';
+import 'aos/dist/aos.css';
+
 
 
 const Home = () => {
@@ -35,7 +38,10 @@ const Home = () => {
   const [userData, setUserData] = useContext(UserContext);
   const [loading, setLoading] = useState(false);
   const [isMobile, setIsMobile] = useState(false);
-
+  useEffect(() => {
+    AOS.init(); // Inicialize o AOS
+  }, []);
+ 
   useEffect(() => {
     const handleResize = () => {
       setIsMobile(window.innerWidth <= 768); 
@@ -132,11 +138,11 @@ const Home = () => {
   return (
     <div>
       <Navbar2 setSearchProducts={setSearchProducts} />
-
       <div className="">
         {searchProducts ? (
           filteredData ? (
-            <div className="cards d-flex cards-search">
+            <div className="container cards d-flex flex-wrap cards-search">
+             
               {filteredData.map((product) => (
                 <Cards
                   key={product._id}
@@ -151,7 +157,8 @@ const Home = () => {
                   showOnMap={product.showOnMap}
                 />
               ))}
-            </div>
+          
+            </div>           
           ) : (
             "Produto não Encontrado"
           )
@@ -159,8 +166,8 @@ const Home = () => {
           <div>
             <CarouselFadeExample />
             <Categorias setCategory={setCategory} />
-            <div className=" container">
-              <h2 id="edit-h2">
+            <div className="container">
+              <h2 data-aos="fade-right" id="edit-h2">
                 Livros <span>Usados</span>
               </h2>
               <h2>{category}</h2>
@@ -173,7 +180,8 @@ const Home = () => {
                         return rows;
                       }, []).map((row, rowIndex) => (
                         <Carousel.Item key={rowIndex}>
-                          <div className="cards text-center d-flex">
+                         
+                          <div data-aos="fade-up" className="cards text-center d-flex">
                             {row.map((product) => (
                               <Cards
                                 key={product._id}
@@ -188,27 +196,18 @@ const Home = () => {
                               />
                             ))}
                           </div>
+                     
                        
                         </Carousel.Item>
                       ))}
             </Carousel>
-            <div  className="container btn-run-filter"><Link id="link-filter" to="/categorias"><div className="btn-run-filter2"><p>Veja mais</p><BsArrowRightShort id="icon-filter"/></div></Link></div>
+            <div  className="container btn-run-filter"><Link id="link-filter" to="/filter"><div className="btn-run-filter2"><p>Veja mais</p><BsArrowRightShort id="icon-filter"/></div></Link></div>
             </div>
-
-
-            <section className="section">
-      <div className="container">
-        <h1 className="section-title"> Leitura Sustentável</h1>
-        <p className="section-slogan">Troque, compre e sustente! Faça parte da Swap Book e promova a sustentabilidade por meio da leitura.<br/>Descubra livros usados de qualidade e contribua para um futuro mais verde. </p>
-       <Link to="/sustainability">Saiba mais</Link>
-      </div>
-    </section>
-
 
     
             <Trotes />
             <div className="container">
-      <h2 id="edit-h2">
+      <h2 data-aos="fade-right" id="edit-h2">
         Veja os Livros Próximos a <span>Você</span>
       </h2>
       {!loading ? <Loader /> : null}
@@ -219,7 +218,7 @@ const Home = () => {
           return rows;
         }, []).map((row, rowIndex) => (
           <Carousel.Item key={rowIndex}>
-            <div className="cards text-center d-flex">
+            <div  data-aos="fade-right" className="cards text-center d-flex">
               {row.map((product) => (
                 <Cards
                   key={product._id}

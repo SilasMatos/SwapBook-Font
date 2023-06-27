@@ -6,6 +6,7 @@ import Footer from '../../Footer/Footer';
 import { BsShieldLock } from 'react-icons/bs';
 import { RiFileUserLine } from 'react-icons/ri';
 import { BsShieldFillCheck } from 'react-icons/bs';
+import { MdHighlightOff } from 'react-icons/md';
 import { GoAlert } from 'react-icons/go';
 import { BsCreditCard2Front } from 'react-icons/bs';
 import { UserContext } from '../../UseContext/UserContext';
@@ -14,7 +15,7 @@ import api from '../../../Services/Api';
 import { Link } from 'react-router-dom';
 import Swal from 'sweetalert2';
 import withReactContent from 'sweetalert2-react-content';
-
+import AOS from 'aos';
 
 function UpdateUser() {
   const [divExibida, setDivExibida] = useState('informacoesPessoais');
@@ -45,7 +46,9 @@ function UpdateUser() {
       gender: data.gender,
     });
   }
-
+  useEffect(() => {
+    AOS.init(); // Inicialize o AOS
+  }, []);
   useEffect(() => {
     getUser();
   }, [dependencies]);
@@ -117,7 +120,7 @@ function UpdateUser() {
 
           <div className="conteudo-Up">
             {divExibida === 'informacoesPessoais' && (
-              <div className="container itens-cont-up">
+              <div data-aos="flip-up" className="container itens-cont-up">
                 <div className="itens-up">
                   <h5 className="tx-up">Meu Cadastro</h5>
                   <p className="tx-p-up">Configure seu Cadastro.</p>
@@ -223,7 +226,7 @@ function UpdateUser() {
             )}
             {divExibida === 'segurancaPrivacidade' && (
               <div>
-                <div className="container itens-cont-up">
+                <div data-aos="flip-up" className="container itens-cont-up">
                   <div className="itens-up">
                     <h5 className="tx-up">Segurança e Privacidade</h5>
                     <p className="tx-p-up">Aumente a segurança e tenha o controle da sua conta</p>
@@ -263,14 +266,18 @@ function UpdateUser() {
 
             {divExibida === 'assinaturas' && (
               <div>
-                <div className="container itens-cont-up">
+                <div data-aos="flip-up" className="container itens-cont-up">
                   <div className="itens-up">
                     <h5 className="tx-up">Assinaturas</h5>
                     <p className="tx-p-up">Gerencie as suas assinaturas</p>
                     <div className="itens-dados-up-2">
+                      <div className='assim-edit'>
+                      <div> < MdHighlightOff id='icon-assim'/></div>
+                      <p>Sua conta ainda não possui nenhuma assinatura. Para você conhecer os nossos planos clique em <span><a href='#'>Saber Mais</a></span> </p>
+                      </div>
                   </div>
-                  </div>
-                  </div>
+                 </div>
+                </div>
               </div>
             )}
           </div>

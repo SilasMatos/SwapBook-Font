@@ -38,7 +38,11 @@ function MyAnnuncements() {
 
       {productsData.length > 0 && (
         <div className="container div-txt">
-          <h2 id="edit-h2">Confira Seus <span>Anúncios</span></h2>
+               <div className="cont-fav-tx">
+        <h1 id="tx-fav">Meus anúncios</h1>
+        <p id="tx-p-fav">
+        Aqui você pode visualizar, editar e gerenciar seus anúncios, incluindo a opção de excluí-los, se desejar.</p>
+        </div>
         </div>
       )}  
       <div className="container con-anum">
@@ -52,8 +56,8 @@ function MyAnnuncements() {
             {productsData.map((product, index) => (
               index % 2 === 0 && (
                 <Carousel.Item key={product._id}>
-                  <div className="d-flex">
-                    <MyCards _id={product._id} name={product.name} author={product.author} src={product.src} price={product.price} synopsis={product.synopsis} />
+                  <div className="d-flex container edit-cards-my">
+                    <MyCards _id={product._id} name={product.name} author={product.author} src={product.src} price={product.price} synopsis={product.synopsis}  createdAt={product.createdAt} />
                     {productsData[index + 1] && (
                       <MyCards _id={productsData[index + 1]._id} name={productsData[index + 1].name} author={productsData[index + 1].author} src={productsData[index + 1].src} price={productsData[index + 1].price} synopsis={productsData[index + 1].synopsis} />
                     )}

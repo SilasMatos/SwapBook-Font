@@ -253,6 +253,18 @@
     font-size: 24pt;
   }
 }
+
+#icon-assim{
+  color: red;
+  font-size: 50pt;
+}
+.assim-edit{
+  display: flex;
+  justify-content: center;
+  padding: 10px;
+  align-items: center;
+  
+}
 html, body {
   height: 100%;
   margin: 0;
